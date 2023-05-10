@@ -1,6 +1,8 @@
 package br.com.aluraflix.infraestructure.adapaters.repositories;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
@@ -31,6 +33,19 @@ public class VideoRepository implements VideoRepositoryPort {
     public Video save(Video video) throws SQLException{
       VideoEntity newEntity = this.springVideoRepository.save(new VideoEntity(video));
       return new Video(newEntity);
+    }
+
+    @Override
+    public List<Video> getAll() {
+      
+      List<VideoEntity> videosEntity = this.springVideoRepository.findAll();
+      List<Video> videos = new ArrayList<>();
+      
+      for(var entity: videosEntity){
+          videos.add(new Video(entity)); 
+      }
+      
+      return videos;       
     }
 
     

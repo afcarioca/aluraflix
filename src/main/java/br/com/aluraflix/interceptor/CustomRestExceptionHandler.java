@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 
 @ControllerAdvice
@@ -27,6 +28,16 @@ public class CustomRestExceptionHandler{
                 .collect(Collectors.toList());
 
         ApiError apiErrorMessage = new ApiError(HttpStatus.BAD_REQUEST, errors);
+        return new ResponseEntity<>(apiErrorMessage, apiErrorMessage.getStatus());
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(
+        MethodArgumentTypeMismatchException ex) {
+        
+        String error = "Parâmetro do "+ex.getName()+" inválido";
+       
+        ApiError apiErrorMessage = new ApiError(HttpStatus.BAD_REQUEST, error);
         return new ResponseEntity<>(apiErrorMessage, apiErrorMessage.getStatus());
     }
     @ExceptionHandler(SQLException.class)

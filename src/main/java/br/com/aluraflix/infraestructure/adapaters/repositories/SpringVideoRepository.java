@@ -1,5 +1,6 @@
 package br.com.aluraflix.infraestructure.adapaters.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,7 @@ public interface SpringVideoRepository extends JpaRepository<VideoEntity, Long> 
     @Query("SELECT url FROM VideoEntity v WHERE v.url LIKE ?1 ORDER BY v.id LIMIT 1")
     public Optional<VideoEntity> findByUrl(String url);
     
+    @Query("SELECT v FROM VideoEntity v WHERE v.status != 0 ")
+    public List<VideoEntity> findAll();
 
 }

@@ -1,6 +1,7 @@
 package br.com.aluraflix.domain.adapters.services;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import br.com.aluraflix.domain.Video;
@@ -23,6 +24,11 @@ public class VideoServiceImpl implements VideoServicePort {
     @Override
     public Video save(Video video) throws SQLException {
         return this.repositoryPort.save(video);
+    }
+
+    @Override
+    public List<Video> getAll() {
+        return this.repositoryPort.getAll();
     }
     
 }

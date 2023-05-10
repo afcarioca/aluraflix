@@ -32,13 +32,10 @@ Long id,
 
 @Pattern(regexp = "^(?:https?:\\/\\/)?(?:www\\.)?(?:m\\.)?(?:youtu\\.be\\/|youtube\\.com\\/(?:embed\\/|v\\/|watch\\?v=))([a-zA-Z0-9\\-_]{11})", message = "Formato Inválido da URL")
 @NotNull(message="Url Nula")
-@NotBlank(message = "Url em Branco") String url,
-
-@NotNull(message="Status Nulo")
-@NotBlank(message = "Status em Branco") int status) {
+@NotBlank(message = "Url em Branco") String url) {
 
     public VideoResponseDTO(Video video){
-        this(video.getId(),video.getTitulo(), video.getDescricao(), video.getUrl(), video.getStatus());
+        this(video.getId(),video.getTitulo(), video.getDescricao(), video.getUrl());
     }
     
 }
