@@ -26,5 +26,8 @@ public record VideoRequestDTO(
 
 @Pattern(regexp = "^(?:https?:\\/\\/)?(?:www\\.)?(?:m\\.)?(?:youtu\\.be\\/|youtube\\.com\\/(?:embed\\/|v\\/|watch\\?v=))([a-zA-Z0-9\\-_]{11})", message = "Formato Inválido da URL")
 @NotNull(message="Url Nula")
-@NotBlank(message = "Url em Branco") String url) {
+@NotBlank(message = "Url em Branco") String url,
+
+@NotNull(message="Url Nulo")
+int status) {
 }

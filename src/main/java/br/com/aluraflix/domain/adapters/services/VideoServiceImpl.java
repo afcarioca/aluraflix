@@ -30,5 +30,20 @@ public class VideoServiceImpl implements VideoServicePort {
     public List<Video> getAll() {
         return this.repositoryPort.getAll();
     }
+
+    @Override
+    public Video getOne(Long id) {
+        return this.repositoryPort.getOne(id);
+    }
+
+    @Override
+    public Long update(Long id, Video video) throws SQLException {
+        return this.repositoryPort.update(id, video);
+    }
+
+    @Override
+    public boolean removeOne(Long id) throws SQLException {
+        return this.repositoryPort.removeOne(id);
+    }
     
 }

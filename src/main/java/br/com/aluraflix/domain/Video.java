@@ -22,7 +22,7 @@ public class Video {
         this.titulo = dto.titulo();
         this.descricao = dto.descricao();
         this.url = dto.url();
-        this.status = Status.ATIVO.getCode();
+        this.status = dto.status();
 
     }
 

@@ -53,14 +53,14 @@ public class VideoEntity {
         this.titulo = dto.titulo();
         this.descricao = dto.descricao();
         this.url = dto.url();
-        this.status = Status.ATIVO.getCode();
+        this.status = dto.status();
     }
 
     public VideoEntity(Video video){
         this.titulo = video.getTitulo();
         this.descricao = video.getDescricao();
         this.url = video.getUrl();
-        this.status = Status.ATIVO.getCode();
+        this.status = video.getStatus();
     }
 
 
